@@ -1,0 +1,197 @@
+{
+    "openrpc": "1.0.0-rc1",
+    "info": {
+        "version": "1.0.0",
+        "title": "API SecretData",
+        "license": {
+            "name": "MIT"
+        }
+    },
+    "servers": [
+        {
+            "name": "production",
+            "url": "https://mock.open-rpc.org/secretdata/1.0.0",
+            "variables": {
+                "version": {
+                    "default": "v1",
+                    "enum": [
+                        "v1",
+                        "v2"
+                    ]
+                }
+            }
+        }
+    ],
+    "methods": [
+        {
+            "name": "manageSecretData",
+            "summary": "Method for secret data managing",
+            "params": [
+                {
+                    "name": "action",
+                    "description": "Action type on data",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "enum": [
+                            "add",
+                            "get",
+                            "delete"
+                        ],
+                        "summary": "Can specify three values: add, get, delete"
+                    }
+                },
+                {
+                    "name": "dataID",
+                    "description": "Identifier for the data",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "userData",
+                    "description": "Data to be added, optional",
+                    "required": false,
+                    "schema": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                {
+                    "name": "accessLevel",
+                    "description": "Level of user access",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "enum": [
+                            "user",
+                            "admin",
+                            "superAdmin"
+                        ],
+                        "summary": "Can specify three values: user, admin, superAdmin"
+                    }
+                },
+                {
+                    "name": "language",
+                    "description": "Language for response messages",
+                    "schema": {
+                        "type": "string",
+                        "enum": [
+                            "en-US",
+                            "fr-FR",
+                            "es-ES"
+                        ]
+                    }
+                }
+            ],
+            "result": {
+                "name": "manageSecretDataResult",
+                "description": "The result of the action performed",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "status": {
+                            "type": "string",
+                            "enum": [
+                                "success",
+                                "failed"
+                            ]
+                        },
+                        "message": {
+                            "type": "string",
+                            "description": "A message describing the result."
+                        },
+                        "data": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "description": "Data returned if the action is 'get'."
+                        }
+                    }
+                }
+            },
+            "errors": [
+                {
+                    "code": 100,
+                    "message": "Invalid action",
+                    "data": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "code": 101,
+                    "message": "Invalid dataID",
+                    "data": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "code": 102,
+                    "message": "Unauthorized access",
+                    "data": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "examples": [
+                {
+                    "name": "addUserDataByUserExample",
+                    "description": "Add user data example. Action = user, all parameters are filled",
+                    "params": [
+                        {
+                            "name": "action",
+                            "value": "add"
+                        },
+                        {
+                            "name": "dataID",
+                            "value": 1
+                        },
+                        {
+                            "name": "userData",
+                            "value": "The secretest data"
+                        },
+                        {
+                            "name": "accessLevel",
+                            "value": "user"
+                        }
+                    ],
+                    "result": {
+                        "name": "status",
+                        "value": "success"
+                    }
+                },
+                {
+                    "name": "getErrorInvalidAccessViaDeleteData",
+                    "description": "Delete data example. Action = user",
+                    "params": [
+                        {
+                            "name": "action",
+                            "value": "delete"
+                        },
+                        {
+                            "name": "dataID",
+                            "value": 1
+                        },
+                        {
+                            "name": "accessLevel",
+                            "value": "user"
+                        }
+                    ],
+                    "result": {
+                        "name": "getErrorInvalidAccessViaDeleteDataResponse",
+                        "value": [
+                            {
+                                "status": "failed",
+                                "message": "This operation not be performed by User"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}
