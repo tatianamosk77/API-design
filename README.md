@@ -14,3 +14,29 @@ You are working on developing API for a data storage that stores sensitive user 
     * userData: data to be added (optional)
     * accessLevel: access level (user, admin, superAdmin)
 + Depending on action and accessLevel, the method should return relevant errors or results. For example, only superAdmin can delete data.
+
+### 1. GraphQL.txt
+The file contains designed GraphQL schema according to the task:
+
+To develop a GraphQL sсhema to manage the DB of students and courses.
+
+**Requirements:**
++ Entities:
+   * Student: Name, Surname, Age, A list of courses.
+   * Course: Name, Description, Cost.
++ Operations:
+   * Add, Delete, Edit a student
+   * Add, Delete, Edit a course
+   * Enrol on a course
+   * DropOut of a course
++ Requests:
+   * Get a list of all students
+   * Get a list of all courses
+   * Get information about student
+   * Get information about course
++ Additionally:
+   * Implement filtering of courses by cost
+   * Implement pagination of a student list
+   * Add a field to course showing count of registered students   
+
+
