@@ -15,10 +15,10 @@ You are working on developing API for a data storage that stores sensitive user 
     * accessLevel: access level (user, admin, superAdmin)
 + Depending on action and accessLevel, the method should return relevant errors or results. For example, only superAdmin can delete data.
 
-### 1. GraphQL.txt
+### 2. GraphQL.txt
 The file contains designed GraphQL schema according to the task:
 
-To develop a GraphQL sсhema to manage the DB of students and courses.
+Develop a GraphQL sсhema to manage the DB of students and courses.
 
 **Requirements:**
 + Entities:
@@ -39,4 +39,30 @@ To develop a GraphQL sсhema to manage the DB of students and courses.
    * Implement pagination of a student list
    * Add a field to course showing count of registered students   
 
+### 3. gRPC.proto
+The file contains designed gRPC schema according to the task:
+
+Develop a gRPC sсhema to manage information of products in a online-store.
+
+**Requirements:**
++ Entities:
+   * Product
+   * Category
++ Operations and requests:
+   * Add a new product
+   * Edit an existing product
+   * Delete a product
+   * Add a new category
+   * Edit an exicting category
+   * Delete a category
+   * Attach a product to a category
+   * Detach a product from a category
+   * Get all products
+   * Get all categories
+   * Get a product by Id
+   * Get a category by Id
++ Additionally:
+   * Implement filtering of products by cost
+   * Implement pagination of a product list
+  
 
