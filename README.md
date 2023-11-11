@@ -64,5 +64,29 @@ Develop a gRPC sсhema to manage information of products in a online-store.
 + Additionally:
    * Implement filtering of products by cost
    * Implement pagination of a product list
-  
+
+
+### 4. REST.yml
+The file contains designed REST schema according to the task:
+
+Develop RESTful API to manage the DB of books and authors in a library.
+
+**Requirements:**
++ Entities:
+   * Book: Id, name, genre, year, authorId.
+   * Author: Id, name, lastName, BirthDate.
++ Operations and requests:
+   * Add a new book
+   * Edit an existing book
+   * Delete a book
+   * Add a new author
+   * Edit an exicting author
+   * Delete an author
+   * Get all books
+   * Get all authors
+   * Get a book by Id
+   * Get an author by Id
++ Additionally:
+   * Implement filtering of book by genre
+   * Implement pagination of a book list
 
